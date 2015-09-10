@@ -19,27 +19,5 @@
 #LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
 #DAMAGE.
 
-# Title: load_options
-# this uses the argparse module to parse the options
-
-import argparse # the argument parsing module
-import os;
-def load():
-    """
-    parse command line options
-    compare old settings
-    """
-    Parser = argparse.ArgumentParser();
-    Parser.add_argument("-o","--output",help="output directory",default="./docs");
-    Parser.add_argument("-p","--project",help="project directory",default="./proj");
-    Parser.add_argument("-i","--input",help=" pass input directory ",default="./src");
-    args = Parser.parse_args();
-    print args.input;
-    print args.output;
-    print args.project;
-    if os.path.exists(args.input):
-	print "input direcotory exits";
-    if os.path.exists(args.input):
-	print "output direcotry exists";
-    if os.path.exists(args.input):
-	print "project directory exist";
+def build():
+    pass;

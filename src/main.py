@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #copyright (c) 2015,jadon belezos 
 #All rights reserved.
 
@@ -19,19 +20,24 @@
 #LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
 #DAMAGE.
 
+# Title: main.py
+# this is the main file of exectuion
+
 
 
 
 # import file # imaginary import modeling code directly after perl version
 import project
 import settings # imginary import of settings 
-import languages
-import topics:
+#import languages
+#import topics
+import builder
 if __name__ == "__main__":  # start point of python interpeter.
    settings.load();
-   languages.load();
-   topics.load();
-   project.loadConfigFileInfo();
-   print 'starting normal_docs' 
+#   languages.load();
+#   topics.load();
+#   project.loadConfigFileInfo();
+#   print 'starting normal_docs' 
    filesToParse = project.filesToParse();
-   print filesToParse; 
+#   print filesToParse; 
+#   builder.build();

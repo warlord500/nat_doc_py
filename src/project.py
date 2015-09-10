@@ -19,7 +19,12 @@
 #LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
 #DAMAGE.
 
+
+# Title: project.py
+# this handles of the project stuff.
 def filesToParse():
     return [];
 def loadConfigFileInfo():
+    pass;
+def filesToBuild():
     pass;
