@@ -22,9 +22,35 @@
 
 # Title: project.py
 # this handles of the project stuff.
-def filesToParse():
+
+########################################
+# function: files_to_parse
+# 
+# Params: None
+#
+# Return: 
+# dictiornay type object.
+# key - filename 
+# value - modification time
+#############################################
+import json;
+import os.path;
+def filesToParse(args):
+    fileTimes = getFileTimes(args);
+    if(not(isinstance(fileTimes,str))):
+        for key ,value in fileTimes.items():
+	   print "File:",key,"lastUpdated:",value;
     return [];
+
+def getFileTimes(args):
+    filename = os.path.join(args.project,"filetimes.json");
+    fileObject = open(filename,"w+");
+    fileTimes = json.JSONEncoder().encode(fileObject.read());
+    print fileTimes;
+    return fileTimes;
+	    
 def loadConfigFileInfo():
     pass;
+
 def filesToBuild():
     pass;

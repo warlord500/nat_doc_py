@@ -24,6 +24,13 @@
 
 import argparse # the argument parsing module
 import os;
+#####################################################################
+# function: load                                                   #
+# load command line and config settings up                         #
+#                                                                  # 
+# Returns:                                                         # 
+# args- dicitionary list of values.                                #
+######################################################################
 def load():
     """
     parse command line options
@@ -43,3 +50,4 @@ def load():
 	print "output direcotry exists";
     if os.path.exists(args.input):
 	print "project directory exist";
+    return args;

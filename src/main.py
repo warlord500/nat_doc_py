@@ -31,13 +31,13 @@ import project
 import settings # imginary import of settings 
 #import languages
 #import topics
-import builder
+#import builder
 if __name__ == "__main__":  # start point of python interpeter.
-   settings.load();
+  args = settings.load();
 #   languages.load();
 #   topics.load();
 #   project.loadConfigFileInfo();
 #   print 'starting normal_docs' 
-   filesToParse = project.filesToParse();
+  filesToParse = project.filesToParse(args);
 #   print filesToParse; 
 #   builder.build();
