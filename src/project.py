@@ -39,13 +39,14 @@ import os;
 def getOldFileTimes(args):
     filename = os.path.join(args.project,fileNameMod);
     if(os.path.exists(filename)):
-	#try:
-	fileObject = open(filename,"r");
-	fileTimes = json.load(fileObject);
-	fileObject.close();
-	#except ValueError:
-	 #   fileTimes ={}
-	 #   print "Value Error occured";
+	try:
+	    fileObject = open(filename,"r");
+	    fileTimes = json.load(fileObject);
+	    fileObject.close();
+	except ValueError:
+	    fileTimes ={}
+	    print "filetimes.json has become invalid please delete it.";
+	    exit();
 	if(isinstance(fileTimes,dict)):
 	    for key ,value in fileTimes.items():
 	       print "File:",key,"lastUpdated:",value;
