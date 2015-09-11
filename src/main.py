@@ -29,15 +29,19 @@
 # import file # imaginary import modeling code directly after perl version
 import project
 import settings # imginary import of settings 
+import os;
 #import languages
 #import topics
 #import builder
 if __name__ == "__main__":  # start point of python interpeter.
   args = settings.load();
-#   languages.load();
-#   topics.load();
-#   project.loadConfigFileInfo();
-#   print 'starting normal_docs' 
-  filesToParse = project.filesToParse(args);
-#   print filesToParse; 
+  #   languages.load();
+  #   topics.load();
+  #   project.loadConfigFileInfo();
+  #   print 'starting normal_docs' 
+  oldTimes  = project.getOldFileTimes(args);
+  curTimes = project.getCurrentFileTimes(args);
+  ParseList = project.cmpFileTimes(curTimes,oldTimes);
+  project.updateModTimes(curTimes,args);
+  print ParseList;
 #   builder.build();

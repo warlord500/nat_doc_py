@@ -22,35 +22,66 @@
 
 # Title: project.py
 # this handles of the project stuff.
-
+fileNameMod = "filetimes.json"
 ########################################
 # function: files_to_parse
 # 
 # Params: None
 #
 # Return: 
-# dictiornay type object.
-# key - filename 
-# value - modification time
+#    dictiornay type object.
+#    key - filename 
+#    value - modification time
 #############################################
 import json;
 import os.path;
-def filesToParse(args):
-    fileTimes = getFileTimes(args);
-    if(not(isinstance(fileTimes,str))):
-        for key ,value in fileTimes.items():
-	   print "File:",key,"lastUpdated:",value;
-    return [];
-
-def getFileTimes(args):
-    filename = os.path.join(args.project,"filetimes.json");
-    fileObject = open(filename,"w+");
-    fileTimes = json.JSONEncoder().encode(fileObject.read());
-    print fileTimes;
+import os;
+def getOldFileTimes(args):
+    filename = os.path.join(args.project,fileNameMod);
+    if(os.path.exists(filename)):
+	try:
+	    fileObject = open(filename,"w+");
+	    fileTimes = json.load(fileObject);
+	    fileObject.close();
+	except ValueError:
+	    fileTimes ={}
+	    print "Value Error occured";
+	if(isinstance(fileTimes,dict)):
+	    for key ,value in fileTimes.items():
+	       print "File:",key,"lastUpdated:",value;
+	else:
+	    fileTimes = {};
     return fileTimes;
-	    
-def loadConfigFileInfo():
-    pass;
 
-def filesToBuild():
-    pass;
+##############################################
+# function: getFilesToCheck()
+# purpose build dict of the newest file times.
+#
+# Depencies: 
+#  os  module
+#  json module
+##########################################
+def getCurrentFileTimes(args):
+    fileTimes = {};
+    listing = os.listdir(args.input);
+    for infile in listing:
+	infile =  os.path.abspath(os.path.join(args.input,infile));
+	fileTimes[infile] = os.path.getmtime(infile);
+    return fileTimes;
+
+
+def cmpFileTimes(curTimes,oldTimes):
+    ParseList = [];
+    for infile in curTimes.items():
+	if (oldTimes.has_key(infile)):
+	    if(oldTimes[infile] > curTimes[infile]):
+		ParseList.append(infile);
+    return ParseList;
+
+
+def updateModTimes(curTimes,args):
+    for infile in curTimes:
+	curTimes[infile] = os.path.getmtime(infile);
+    fileObject = open(os.path.join(args.project,fileNameMod),"w+");
+    json.dump(curTimes,fileObject);
+    fileObject.close();
