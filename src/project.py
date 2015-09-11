@@ -39,19 +39,20 @@ import os;
 def getOldFileTimes(args):
     filename = os.path.join(args.project,fileNameMod);
     if(os.path.exists(filename)):
-	try:
-	    fileObject = open(filename,"w+");
-	    fileTimes = json.load(fileObject);
-	    fileObject.close();
-	except ValueError:
-	    fileTimes ={}
-	    print "Value Error occured";
+	#try:
+	fileObject = open(filename,"r");
+	fileTimes = json.load(fileObject);
+	fileObject.close();
+	#except ValueError:
+	 #   fileTimes ={}
+	 #   print "Value Error occured";
 	if(isinstance(fileTimes,dict)):
 	    for key ,value in fileTimes.items():
 	       print "File:",key,"lastUpdated:",value;
 	else:
 	    fileTimes = {};
-    return fileTimes;
+	return fileTimes;
+    return {};
 
 ##############################################
 # function: getFilesToCheck()
@@ -74,8 +75,10 @@ def cmpFileTimes(curTimes,oldTimes):
     ParseList = [];
     for infile in curTimes.items():
 	if (oldTimes.has_key(infile)):
-	    if(oldTimes[infile] > curTimes[infile]):
+	    if(oldTimes[infile] != curTimes[infile]):
 		ParseList.append(infile);
+	else:
+	    ParseList.append(infile);
     return ParseList;
 
 
