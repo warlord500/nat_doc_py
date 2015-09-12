@@ -1,3 +1,5 @@
+
+#!/usr/bin/python
 #copyright (c) 2015,jadon belezos 
 #All rights reserved.
 
@@ -19,25 +21,6 @@
 #LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
 #DAMAGE.
 
-# title: langauge module
-# class: base 
-#   the langauge base class which is used when parsing file.
-class base:
-    def ParseFile:
-	pass;
-    def ParsePrototype:
-	pass;
-   def typeBeforeParamter:
-       pass;
-def load();
-   pass;
-#################################################33
-# function: languageof
-#  figure out the langauge of a file.
-#
-# params:
-#   filename - the file that need the language to be figured out.
-#   
-#   
-def languageof(filename):
-    pass;
+# Title: native_parser
+
+

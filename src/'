@@ -94,6 +94,5 @@ def filterParseList(ParseList):
     ext = "";
     for file in ParseList:
 	ext = os.path.splitext(file)[1]
-	print ext,"\n";
-	if(ext != ".py"):
+	if(ext  != "py"):
 	    ParseList.remove(file);

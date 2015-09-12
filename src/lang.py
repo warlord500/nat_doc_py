@@ -1,4 +1,3 @@
-#!/usr/bin/python
 #copyright (c) 2015,jadon belezos 
 #All rights reserved.
 
@@ -20,33 +19,30 @@
 #LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
 #DAMAGE.
 
-# Title: main.py
-# this is the main file of exectuion
+# title: langauge module
+import os.path;
+# class: base 
+#   the langauge base class which is used when parsing file.
+class base:
+    def ParseFiles(self):
+	pass;
+    def ParsePrototype(self):
+	pass;
+    def typeBeforeParamter(self):
+       pass;
 
 
-
-
-# import file # imaginary import modeling code directly after perl version
-import project
-import settings # imginary import of settings 
-import os;
-from languageDir import *; # import all language parsers.
-import lang;
-#import topics
-#import builder
-if __name__ == "__main__":  # start point of python interpeter.
-  args = settings.load();
-  #   languages.load();
-  #   topics.load();
-  #   project.loadConfigFileInfo();
-  #   print 'starting normal_docs' 
-  oldTimes  = project.getOldFileTimes(args);
-  curTimes = project.getCurrentFileTimes(args);
-  ParseList = project.cmpFileTimes(curTimes,oldTimes);
-  project.updateModTimes(curTimes,args);
-  project.filterParseList(ParseList);
-  print ParseList;
-  for sourceFile in ParseList:
-      lang_parser = lang.langRegister().languageOf(sourceFile);
-      
-#   builder.build();
+class langRegister():
+    LanguageDict = {};
+    def register(self,FileExt,function):
+	self.LanguageDict[fileExt] = function;
+    def languageOf(self,filename):
+	return self.LanguageDict[os.path.splitext(filename)[1]];
+#################################################33
+# function: languageof
+#  figure out the langauge of a file.
+#
+# params:
+#   filename - the file that need the language to be figured out.
+#   
+#   ".py": pythonParser
