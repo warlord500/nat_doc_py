@@ -1,8 +1,8 @@
-import  ../lang;
-class pythonParser(base):
-    def ParseFile():
+import  lang;
+class pythonParser(lang.base):
+    def ParseFile(self,filename):
 	print "running python parser";
 
-reg = langRegister();
-reg.register(".py",PythonParser());
+reg = lang.langRegister();
+reg.register(".py",pythonParser());
 print "did this get imported";
