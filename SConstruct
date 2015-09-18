@@ -11,7 +11,7 @@ phonyTargets(env,
 HELLO = """
     @echo "building project package in build directory" && \
     mkdir -p build && \
-    tar -cvf test.tar src ./SConstruct && \
+    tar -cvf test.tar src/*.pyc ./SConstruct && \
     gzip test.tar && \
     mv test.tar.gz build/test.tar.gz
 """,
