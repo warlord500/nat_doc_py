@@ -23,4 +23,5 @@
 
 # Title: native_parser
 
-
+def generateTopic(stringlist):
+    pass;
