@@ -9,20 +9,23 @@ class pythonParser(lang.base):
 	fileLines = fileObj.readlines(); # generate the list of lines in file.
         oncomment = False; # are we currently parsing a topic.
 	for string in fileLines: #
-            if(isCommentLine(string)):
+	    string = isCommentLine(string);
+            if(string != ""):
                 sys.stdout.write(string);
-                oncomment = True;
+		stringList.append(string);
+
+
 def isCommentLine(lineString):
     column = 0;
     char = lineString[column]
     while(char != "\n"):
         if(char.isalnum()):
-            return False;
+            return "";
         if(char == "#"):
-            return True;
+	    return lineString[column+1:];
         column += 1;
         char = lineString[column];
-    return False; # handle blank lines as lines with code.
+    return ""; # handle blank lines as lines with code.
 
 
 reg = lang.langRegister();
