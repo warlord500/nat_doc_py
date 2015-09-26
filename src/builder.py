@@ -19,5 +19,7 @@
 #LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
 #DAMAGE.
 
-def build():
-    pass;
+
+def buildDoc(filename,args,indexData,topicList):
+    file = open(os.path.abspath(os.path.join(filename,args.output)),"w+");
+    file.write("<html> <head> <title> ? </title> </head>" % filename)

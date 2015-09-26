@@ -1,6 +1,7 @@
 import  lang;
 import sys;
 import nativeParser;
+import pdb;
 class pythonParser(lang.base):
     def ParseFile(self,filename):
 	print "running python parser";
@@ -10,22 +11,25 @@ class pythonParser(lang.base):
         oncomment = False; # are we currently parsing a topic.
 	for string in fileLines: #
 	    string = isCommentLine(string);
-            if(string != ""):
-                sys.stdout.write(string);
-		stringList.append(string);
-
+           # pdb.set_trace();
+            if(string == None):
+                if(stringList != []):
+                        nativeParser.generateTopic(stringList);
+                        stringList = [];
+            else:
+                 stringList.append(string);
 
 def isCommentLine(lineString):
     column = 0;
     char = lineString[column]
     while(char != "\n"):
         if(char.isalnum()):
-            return "";
-        if(char == "#"):
+            return None;
+        elif(char == "#"):
 	    return lineString[column+1:];
         column += 1;
         char = lineString[column];
-    return ""; # handle blank lines as lines with code.
+    return None; # handle blank lines as lines with code.
 
 
 reg = lang.langRegister();

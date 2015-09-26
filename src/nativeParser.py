@@ -23,5 +23,14 @@
 
 # Title: native_parser
 
-def generateTopic(stringlist):
-    pass;
+def generateTopic(stringList):
+    onSummary = False;
+    #for line in stringList:
+    print(stringList);
+class topic:
+    def __init__(self,topicName,topicType,sectionName,sectionContent):
+        self.topicName = topicName
+        self.topicType = topicType;
+        self.sectionName = sectionName
+        self.sectionContent = sectionContent
+
